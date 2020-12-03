@@ -5,56 +5,91 @@
                 <div class="card-heading clearfix border-bottom mb-4">
                     <h4 class="card-title">Approval Requests</h4>
                 </div>
-                <div class="card-body" >
-                    <ul class="list-unstyled" >
-                        <li class="position-relative booking"  *ngFor="let request of agentRequest">
-                            <div class="media">
-                                <div class="msg-img">
-                                    <img src="../../../assets/images/faces/mine.jpg" alt="">
+                <div class="card-body">
+
+                    <table>
+                        <tr
+                            *ngFor="let request of agentRequest | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li class="position-relative booking" [class.active]="i == currentIndex">
+                                        <div class="media">
+                                            <div class="msg-img">
+                                                <img src="../../../assets/images/faces/mine.jpg" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="mb-4">{{request.account.username}}<span
+                                                        class="badge badge-primary mx-3">Unviewed</span><span
+                                                        class="badge badge-danger">unverified</span></h5>
+
+                                                <div class="mb-3">
+                                                    <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Request
+                                                        Date:</span>
+                                                    <span class="bg-light-blue">02.03.2020 - 04.03.2020</span>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Adresse:</span>
+                                                    <span class="bg-light-blue">bole | ethiopia</span>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">File:</span>
+                                                    <span class="bg-light-blue">document</span>
+                                                </div>
+                                                <div class="mb-5">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">contact:</span>
+                                                    <span
+                                                        class="border-right pr-2 mr-2">{{request.account.username}}</span>
+                                                    <span
+                                                        class="border-right pr-2 mr-2">{{request.account.username}}</span>
+                                                    <span>{{request.account.phoneNumber}}</span>
+                                                </div>
+                                                <a href="#" class="btn-gray">Send Message</a>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <div class="buttons-to-right">
+                                    <a class="btn-gray mr-2" (click)="declineAgent(request._id)"><i
+                                            class="far fa-times-circle mr-2"></i> Reject</a>
+                                    <a class="btn-gray" (click)="approveAgent(request._id)"><i
+                                            class="far fa-check-circle mr-2"></i> Approve</a>
                                 </div>
-                                <div class="media-body">
-                                    <h5 class="mb-4">{{request.account.username}}<span class="badge badge-primary mx-3">Unviewed</span><span class="badge badge-danger">unverified</span></h5>
-                       
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Request Date:</span>
-                                        <span class="bg-light-blue">02.03.2020 - 04.03.2020</span>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Adresse:</span>
-                                        <span class="bg-light-blue">bole | ethiopia</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">File:</span>
-                                        <span class="bg-light-blue">document</span>
-                                    </div>
-                                    <div class="mb-5">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">contact:</span>
-                                        <span class="border-right pr-2 mr-2">{{request.account.username}}</span>
-                                        <span class="border-right pr-2 mr-2">{{request.account.username}}</span>
-                                        <span>{{request.account.phoneNumber}}</span>
-                                    </div>
-                                    <a href="#" class="btn-gray">Send Message</a>
-                                </div>
-                            </div>
-                            <div class="buttons-to-right">
-                                <a href="#" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i> Reject</a>
-                                <a class="btn-gray" (click)="getWaitingAgent()"><i class="far fa-check-circle mr-2"></i> Approve</a>
-                            </div>
-                        </li>
-                        
-                    </ul>
-    
-                    <!-- main app container -->
-                    <!-- <div class="card text-center m-3">
-                        <h3 class="card-header">Angular 9 Pagination Example</h3>
-                        <div class="card-body" style="color: black;">
-                            <div *ngFor="let item of pageOfItems">{{item.name}}</div>
-                        </div>
-                        <div class="card-footer pb-0 pt-3">
-                            <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
-                        </div>
-                    </div> -->
+                            </td>
+                        </tr>
+                    </table>
+                    <div >
+                        <ngb-pagination [collectionSize]="items.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                            [ellipses]="false" [boundaryLinks]="true" class="d-flex justify-content-end"></ngb-pagination>
+                    </div>
+
+
+
+                    <!-- <div>
+                        <ngx-datatable [rows]="rows" [columns]="columns"> </ngx-datatable>
+                      </div> -->
+
+
+
+                    <!-- <div>
+                        <ngx-datatable
+                          class="material"
+                          [rows]="rows"
+                          [columns]="[{ name: 'Name' }, { name: 'Gender' }, { name: 'Company' }]"
+                          [headerHeight]="50"
+                          [footerHeight]="20"
+                          rowHeight="auto"
+                          [limit]="2"
+                        >
+                        </ngx-datatable>
+                      </div> -->
+
 
                     <!-- <ul>
                         <li>User Name | User email</li>

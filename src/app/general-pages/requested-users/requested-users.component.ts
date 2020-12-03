@@ -1,7 +1,7 @@
 // built-in
 import { Component, OnInit } from '@angular/core';
-// import { NgxPaginateModule } from 'ngx-paginate';
-// import { NgxPaginationModule } from 'ngx-pagination';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+
 
 // custom 
 import { UserService } from 'src/app/services/user.service';
@@ -14,44 +14,56 @@ import { agentRequest } from '../../modals/agentRequest';
 })
 export class RequestedUsersComponent implements OnInit {
 
+  // rows = [];
+  ColumnMode = ColumnMode;
   items = [];
   agentRequest:any=[];
-  pageOfItems: Array<any>;
 
+  page = 1;
+  pageSize =3;
+
+ 
 
   constructor(private userService: UserService) {
-    // for(let i=1; i < 200 ; i++){
-    //   let obje={'name':`User Name${i}`,'id':`UID${i}`};
-    //   this.items.push(obje);
-    // }
+    
   }
 
   ngOnInit() {
+   
     this.getWaitingAgent();
     // an example array of 150 items to be paged
-    // this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}` }));
+    this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}` }));
     // for (let i = 1; i < 200; i++) {
     //   let obje = { 'name': `User Name${i}`, 'id': `UID${i}` };
     //   this.items.push(obje);
     // }
   }
+
+  // get list of waiting agents
   getWaitingAgent() {
     console.log('waiting agent list');
-    this.userService.userApproval().subscribe((res) => {
+    this.userService.agentApproval().subscribe((res) => {
       console.log(res);
       this.agentRequest=res.accounts;
-      // for(let i=1; i < this.agentRequest.length ; i++){
-      //   let obje=this.agentRequest[i];
-      //   this.items.push(obje);
-      // }
       console.log('request array',this.agentRequest);
-      // console.log('request array copy',this.items);
+    
     });
   }
 
-  onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
-    this.pageOfItems = pageOfItems;
+  // approve agents
+  approveAgent(id : string){
+    console.log('approve agent', id);
+    this.userService.approveAgent(id).subscribe((res)=>{
+        console.log(res);
+    });
   }
 
+  // decline agents
+  declineAgent(id: string){
+    console.log('decline agent',id);
+  //   this.userService.declineAgent(id).subscribe((res)=>{
+  //     console.log(res);
+  // });
+  }
+ 
 }

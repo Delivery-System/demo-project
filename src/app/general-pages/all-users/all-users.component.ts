@@ -1,4 +1,10 @@
+// built-in
 import { Component, OnInit } from '@angular/core';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+
+// custom 
+import { UserService } from 'src/app/services/user.service';
+import { agentRequest } from '../../modals/agentRequest';
 
 @Component({
   selector: 'app-all-users',
@@ -6,10 +12,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-users.component.scss']
 })
 export class AllUsersComponent implements OnInit {
+ // rows = [];
+ ColumnMode = ColumnMode;
+ items = [];
+ allUsers:any=[];
 
-  constructor() { }
+ page = 2;
+ pageSize =4;
 
-  ngOnInit(): void {
-  }
+ constructor(private userService: UserService) {
+   
+ }
+
+ ngOnInit() {
+  
+   this.getAllUsers();
+   
+ }
+
+ // get list of waiting agents
+ getAllUsers() {
+   console.log('all users list');
+   this.userService.getAllUsers().subscribe((res) => {
+     console.log(res);
+     this.allUsers=res;
+     console.log('all users array',this.allUsers);
+   
+   });
+ }
+
 
 }
+
+

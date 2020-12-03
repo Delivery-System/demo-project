@@ -2,14 +2,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-// import { JwPaginationComponent } from 'jw-angular-pagination';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
-// import { NgxPaginationModule } from 'ngx-pagination';
-// import { NgxPaginateModule } from 'ngx-paginate';
-// import paginate from 'jw-paginate';
 
 // custom modules
 import { AppComponent } from './app.component';
@@ -25,8 +20,6 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { DummyLoginComponent } from './dummy-login/dummy-login.component';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +28,6 @@ import { DummyLoginComponent } from './dummy-login/dummy-login.component';
     FooterComponent,
     DashboardComponent,
     TodoListComponent,
-    // JwPaginationComponent,
     TodoComponent,
     SpinnerComponent,
     ContentAnimateDirective,
@@ -44,13 +36,9 @@ import { DummyLoginComponent } from './dummy-login/dummy-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    // JwPaginationModule,
-    // NgxPaginationModule,
-    // NgxPaginateModule,
     ReactiveFormsModule,
     ChartsModule
   ],

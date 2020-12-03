@@ -23,28 +23,31 @@
                   <th>
                     Tracking ID
                   </th>
+                  <th>
+                   Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr  *ngFor="let user of allUsers | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                   <td>
                     <img src="assets/images/faces/face1.jpg" class="mr-2" alt="image">
-                   melkam beyene
+                  {{user.Username}}
                   </td>
                   <td>
-                   melk@gmail.com
+                    {{user.email}}
                   </td>
                   <td>
                     <label class="badge badge-gradient-success">Approved</label>
                   </td>
                   <td>
-                   Agent
+                    {{user.role}}
                   </td>
                   <td>
                     WD-12345
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>
                     <img src="assets/images/faces/face2.jpg" class="mr-2" alt="image">
                     Elias breket
@@ -79,8 +82,8 @@
                   <td>
                     WD-12347
                   </td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <td>
                     <img src="assets/images/faces/face4.jpg" class="mr-2" alt="image">
                     kali mesfin
@@ -97,9 +100,17 @@
                   <td>
                     WD-12348
                   </td>
-                </tr>
+                </tr> -->
+                <td>
+                  <div style="text-align: center; margin-top: 10px;">
+                    <ngb-pagination [collectionSize]="allUsers.length" [(page)]="page" [maxSize]="5" [rotate]="true"
+                        [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                </div>
+                </td>
               </tbody>
             </table>
+
+           
           </div>
         </div>
       </div>
