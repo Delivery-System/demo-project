@@ -5,22 +5,24 @@
                 <div class="card-heading clearfix border-bottom mb-4">
                     <h4 class="card-title">Approval Requests</h4>
                 </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li class="position-relative booking">
+                <div class="card-body" >
+                    <ul class="list-unstyled" >
+                        <li class="position-relative booking"  *ngFor="let request of agentRequest">
                             <div class="media">
                                 <div class="msg-img">
                                     <img src="../../../assets/images/faces/mine.jpg" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <h5 class="mb-4">Hena Fufa<span class="badge badge-primary mx-3">Pending</span><span class="badge badge-danger">unverified</span></h5>
+                                    <h5 class="mb-4">{{request.account.username}}<span class="badge badge-primary mx-3">Unviewed</span><span class="badge badge-danger">unverified</span></h5>
+                       
                                     <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Requested Date:</span>
+                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Request Date:</span>
                                         <span class="bg-light-blue">02.03.2020 - 04.03.2020</span>
                                     </div>
+                                    
                                     <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Request Details:</span>
-                                        <span class="bg-light-blue">2 files</span>
+                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Adresse:</span>
+                                        <span class="bg-light-blue">bole | ethiopia</span>
                                     </div>
                                     <div class="mb-3">
                                         <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">File:</span>
@@ -28,9 +30,9 @@
                                     </div>
                                     <div class="mb-5">
                                         <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">contact:</span>
-                                        <span class="border-right pr-2 mr-2">hena fufa</span>
-                                        <span class="border-right pr-2 mr-2"> hena@gmail.com</span>
-                                        <span>123-563-789</span>
+                                        <span class="border-right pr-2 mr-2">{{request.account.username}}</span>
+                                        <span class="border-right pr-2 mr-2">{{request.account.username}}</span>
+                                        <span>{{request.account.phoneNumber}}</span>
                                     </div>
                                     <a href="#" class="btn-gray">Send Message</a>
                                 </div>
@@ -40,80 +42,31 @@
                                 <a class="btn-gray" (click)="getWaitingAgent()"><i class="far fa-check-circle mr-2"></i> Approve</a>
                             </div>
                         </li>
-
-                        <li class="position-relative booking">
-                            <div class="media">
-                                <div class="msg-img">
-                                    <img src="../../../assets/images/faces/mine.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <h5 class="mb-4">Hena Fufa<span class="badge badge-primary mx-3">Pending</span><span class="badge badge-danger">unverified</span></h5>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Requested Date:</span>
-                                        <span class="bg-light-blue">02.03.2020 - 04.03.2020</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Request Details:</span>
-                                        <span class="bg-light-blue">2 files</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">File:</span>
-                                        <span class="bg-light-blue">document</span>
-                                    </div>
-                                    <div class="mb-5">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">contact:</span>
-                                        <span class="border-right pr-2 mr-2">hena fufa</span>
-                                        <span class="border-right pr-2 mr-2"> hena@gmail.com</span>
-                                        <span>123-563-789</span>
-                                    </div>
-                                    <a href="#" class="btn-gray">Send Message</a>
-                                </div>
-                            </div>
-                            <div class="buttons-to-right">
-                                <a href="#" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i> Reject</a>
-                                <a href="#" class="btn-gray"><i class="far fa-check-circle mr-2"></i> Approve</a>
-                            </div>
-                        </li>
-                        <li class="position-relative booking">
-                            <div class="media">
-                                <div class="msg-img">
-                                    <img src="../../../assets/images/faces/mine.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <h5 class="mb-4">Hena Fufa<span class="badge badge-primary mx-3">Pending</span><span class="badge badge-danger">unverified</span></h5>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Requested Date:</span>
-                                        <span class="bg-light-blue">02.03.2020 - 04.03.2020</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Request Details:</span>
-                                        <span class="bg-light-blue">2 files</span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">File:</span>
-                                        <span class="bg-light-blue">document</span>
-                                    </div>
-                                    <div class="mb-5">
-                                        <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">contact:</span>
-                                        <span class="border-right pr-2 mr-2">hena fufa</span>
-                                        <span class="border-right pr-2 mr-2"> hena@gmail.com</span>
-                                        <span>123-563-789</span>
-                                    </div>
-                                    <a href="#" class="btn-gray">Send Message</a>
-                                </div>
-                            </div>
-                            <div class="buttons-to-right">
-                                <a href="#" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i> Reject</a>
-                                <a href="#" class="btn-gray"><i class="far fa-check-circle mr-2"></i> Approve</a>
-                            </div>
-                        </li>
-    
-                       
+                        
                     </ul>
     
+                    <!-- main app container -->
+                    <!-- <div class="card text-center m-3">
+                        <h3 class="card-header">Angular 9 Pagination Example</h3>
+                        <div class="card-body" style="color: black;">
+                            <div *ngFor="let item of pageOfItems">{{item.name}}</div>
+                        </div>
+                        <div class="card-footer pb-0 pt-3">
+                            <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+                        </div>
+                    </div> -->
+
+                    <!-- <ul>
+                        <li>User Name | User email</li>
+                        <li *ngFor="let request of agentRequest" style="color: black;">
+                            {{request.account.username}} | {{request.isApproved}}
+                        </li>
+                        <pagination-control (pageChange)="p=$event"></pagination-control>
+                    </ul> -->
+
                 </div>
             </div>
-    
+
         </div>
     </div>
-    </div>
+</div>

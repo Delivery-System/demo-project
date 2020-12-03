@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { from, Observable } from 'rxjs';
 
 // custom
-import {WaitingAgent} from '../modals/waitingAgent'
+import {agentRequest} from '../modals/agentRequest'
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,11 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  userApproval():Observable<WaitingAgent>{
+  userApproval():Observable<agentRequest>{
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
    
-    return this.http.get<WaitingAgent>('http://localhost:3000/waitingAgents',{ headers: headers });
+    return this.http.get<agentRequest>('http://localhost:3000/waitingAgents',{ headers: headers });
   }
 }
